@@ -2,9 +2,9 @@
 
 include('simple_html_dom.php');
 
-prothomalo();
+/*prothomalo();
 kalerkontho();
-jugantor();
+jugantor();*/
 dailystar();
 newage();
 
@@ -18,9 +18,15 @@ function newage(){
         $titleclass  = $newsclass->find('h3 a', 0);
         $titletext=$titleclass->innertext;
         $link= $titleclass->getAttribute('href');
+        //---------------------------------------
+       // $imgclass= $newsclass->find('img[class=img-responsive]', 0);
+       // $imglink=$imgclass->getAttribute('src');
+        //----------------------------------------
         echo $name."<br>";
+       // ngetimage($imglink);
         echo $titletext."<br>";
         echo "<a href=".$link.">Read More</a><br>";
+
     }
     else{
         echo "cant load ".$name."<br>";
@@ -42,7 +48,12 @@ function  dailystar(){
         $titleclass = $newsclass->find('h5 a', 0);
         $titletext=$titleclass->innertext;
         $link= $titleclass->getAttribute('href');
+        //------------------------------------------
+        //$imgclass= $html->find('img[class=image-style-small-1]', 0);
+        //$imglink=$imgclass->getAttribute('src');
+        //------------------------------------------
         echo $name."<br>";
+       // ngetimage($imglink);
         echo $titletext."<br>";
         echo "<a href="."http://www.thedailystar.net".$link.">Read More</a><br>";
     }
@@ -115,18 +126,16 @@ function prothomalo(){
     }
     echo "<hr>";
 }
-function siteup($url){
+function siteup($url)
+{
     $array = get_headers($url);
     $string = $array[0];
-    if(strpos($string,"200"))
-    {
+    if (strpos($string, "200")) {
         return true;
+    } else {
+        return false;
     }
-    else
-    {
-       return false;
-    }
-function getimage($url){
-    echo '<img src="'.$url.'" alt="headlineImg" width="100" height="100">';
 }
+function ngetimage($url){
+    echo '<img src="'.$url.'" alt="headlineImg" width="100" height="100"><br>';
 }
