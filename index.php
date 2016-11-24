@@ -20,7 +20,7 @@ function newage(){
         $link= $titleclass->getAttribute('href');
         //---------------------------------------
        // $imgclass= $newsclass->find('img[class=img-responsive]', 0);
-       // $imglink=$imgclass->getAttribute('src');
+       //  $imglink=$imgclass->getAttribute('src');
         //----------------------------------------
         echo $name."<br>";
        // ngetimage($imglink);
