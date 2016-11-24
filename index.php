@@ -126,4 +126,7 @@ function siteup($url){
     {
        return false;
     }
+function getimage($url){
+    echo '<img src="'.$url.'" alt="headlineImg" width="100" height="100">';
+}
 }
