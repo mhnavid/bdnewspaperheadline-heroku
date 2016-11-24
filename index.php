@@ -2,9 +2,9 @@
 
 include('simple_html_dom.php');
 
-/*prothomalo();
+prothomalo();
 kalerkontho();
-jugantor();*/
+jugantor();
 dailystar();
 newage();
 
