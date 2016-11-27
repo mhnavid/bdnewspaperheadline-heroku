@@ -1,0 +1,143 @@
+<?php
+
+include('simple_html_dom.php');
+
+ittefaq();
+samakal();
+janakantha();
+banglanews24();
+bdnews24();
+
+function ittefaq(){
+    $url='http://www.ittefaq.com.bd/';
+    $name='Ittefaq';
+    if(siteup($url)) {
+        $html = new simple_html_dom();
+        $html->load_file($url);
+        $titleclass= $html->find('div[class=oim-wrapper sitewidthleft] ul[class=oim-slider] li div div a', 0);
+        $titletext=$titleclass->innertext;
+        $link= $titleclass->getAttribute('href');
+        //---------------------------------------
+       // $imgclass= $newsclass->find('img[class=img-responsive]', 0);
+       //  $imglink=$imgclass->getAttribute('src');
+        //----------------------------------------
+        echo $name."<br>";
+       // ngetimage($imglink);
+        echo $titletext."<br>";
+        echo "<a href=".$link.">Read More</a><br>";
+    }
+    else{
+        echo "cant load ".$name."<br>";
+    }
+    echo "<hr>";
+}
+
+function samakal(){
+    $url='http://bangla.samakal.net/';
+    $name='Samakal';
+    if(siteup($url)) {
+        $html = new simple_html_dom();
+        $html->load_file($url);
+        $titleclass= $html->find('div[id=full_lead_news] div h1 a', 0);
+        $titletext=$titleclass->innertext;
+        $link= $titleclass->getAttribute('href');
+        //---------------------------------------
+       // $imgclass= $newsclass->find('img[class=img-responsive]', 0);
+       //  $imglink=$imgclass->getAttribute('src');
+        //----------------------------------------
+        echo $name."<br>";
+       // ngetimage($imglink);
+        echo $titletext."<br>";
+        echo "<a href=".$link.">Read More</a><br>";
+    }
+    else{
+        echo "cant load ".$name."<br>";
+    }
+    echo "<hr>";
+}
+
+function janakantha(){
+    $url='https://www.dailyjanakantha.com/';
+    $name='Janakantha';
+    if(siteup($url)) {
+        $html = new simple_html_dom();
+        $html->load_file($url);
+        $titleclass = $html->find('div[class=bikRow row3] div a h2[class=highlight]', 0);
+        $titletext=$titleclass->innertext;
+        $linkclass = $html->find('div[class=bikRow row3] div a', 0);
+        $link= $linkclass->getAttribute('href');
+        //---------------------------------------
+       // $imgclass= $newsclass->find('img[class=img-responsive]', 0);
+       //  $imglink=$imgclass->getAttribute('src');
+        //----------------------------------------
+        echo $name."<br>";
+       // ngetimage($imglink);
+        echo $titletext."<br>";
+        echo "<a href=".$link.">Read More</a><br>";
+    }
+    else{
+        echo "cant load ".$name."<br>";
+    }
+    echo "<hr>";
+}
+
+function banglanews24(){
+    $url='http://www.banglanews24.com/';
+    $name='Banglanews24 ';
+    if(siteup($url)) {
+        $html = new simple_html_dom();
+        $html->load_file($url);
+        $titleclass= $html->find('div[class=col-sm-12 item active] h2 a', 0);
+        $titletext=$titleclass->innertext;
+        $link= $titleclass->getAttribute('href');
+        //------------------------------------------
+        //$imgclass= $html->find('img[class=image-style-small-1]', 0);
+        //$imglink=$imgclass->getAttribute('src');
+        //------------------------------------------
+        echo $name."<br>";
+       // ngetimage($imglink);
+        echo $titletext."<br>";
+        echo "<a href="."http://www.thedailystar.net".$link.">Read More</a><br>";
+    }
+    else{
+        echo "cant load ".$name."<br>";
+    }
+    echo "<hr>";
+}
+
+function bdnews24(){
+    $url='http://bdnews24.com/';
+    $name='BD News 24';
+    if(siteup($url)) {
+        $html = new simple_html_dom();
+        $html->load_file($url);
+        $titleclass= $html->find('div[class=article news first default] div h1[class=default] a', 0);
+        $titletext=$titleclass->innertext;
+        $link= $titleclass->getAttribute('href');
+        //---------------------------------------
+       // $imgclass= $newsclass->find('img[class=img-responsive]', 0);
+       //  $imglink=$imgclass->getAttribute('src');
+        //----------------------------------------
+        echo $name."<br>";
+       // ngetimage($imglink);
+        echo $titletext."<br>";
+        echo "<a href=".$link.">Read More</a><br>";
+    }
+    else{
+        echo "cant load ".$name."<br>";
+    }
+    echo "<hr>";
+}
+
+function siteup($url)
+{
+    $array = get_headers($url);
+    $string = $array[0];
+    if (strpos($string, "200")) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+?>
